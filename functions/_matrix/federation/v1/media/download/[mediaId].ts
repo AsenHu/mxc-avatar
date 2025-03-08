@@ -16,13 +16,26 @@ const onRequestGet = async (context: { request: Request }) => {
     它的 Content-Type 是 image/svg+xml
     它的 Content-Disposition 是 inline; filename="avatar.svg" */
     return new Response(
-        `--boundary\nContent-Type: application/json\n\n{}\n--boundary\nContent-Type: image/svg+xml\nContent-Disposition: inline; filename="avatar.svg"\n\n${svg}\n--boundary--`,
+        `--boundary\nContent-Type: application/json\n\n{}\n--boundary\nContent-Type: image/svg+xml\nContent-Disposition: attachment; filename="avatar.svg"\n\n${svg}\n--boundary--`,
         {
+            status: 200,
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'multipart/mixed; boundary=boundary',
             },
         },
     );
 }
 
-export { onRequestGet }
+const onRequestOptions = async () => {
+    return new Response(null, {
+        status: 204,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Max-Age': '86400',
+        }
+    });
+}
+
+export { onRequestGet, onRequestOptions }

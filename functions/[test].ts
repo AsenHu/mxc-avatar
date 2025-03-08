@@ -10,6 +10,7 @@ const onRequestGet = async (context: { request: Request }) => {
 
     // 返回 SVG
     return new Response(svg, {
+        status: 200,
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'image/svg+xml',
@@ -23,7 +24,7 @@ const onRequestOptions = async () => {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, OPTIONS',
-            'Access-Control-Max-Age': '86400'
+            'Access-Control-Max-Age': '86400',
         }
     });
 }
