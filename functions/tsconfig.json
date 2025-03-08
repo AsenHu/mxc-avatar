@@ -8,7 +8,7 @@
         "types": [
             "@cloudflare/workers-types"
         ],
-        "baseUrl": "../",
+        "baseUrl": "./",
         "paths": {
             "lib/*": [
                 "lib/*"
