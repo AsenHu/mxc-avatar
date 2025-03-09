@@ -1,7 +1,7 @@
 async function onRequestGet(context: { request: Request }) {
     const url = new URL(context.request.url);
     const hostname = url.hostname;
-    const port = url.port;
+    const port = url.port || '443';
 
     return new Response(`{"m.server": "${hostname}:${port}"}`, {
         status: 200,
