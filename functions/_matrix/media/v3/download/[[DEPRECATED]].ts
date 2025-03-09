@@ -4,8 +4,8 @@ async function onRequestGet(context: { request: Request }) {
     // 获取信息
     const url = new URL(context.request.url);
     const path = url.pathname.split('/');
-    const mediaId = path[5];
-    const fileName = path[6];
+    const mediaId = path[6];
+    const fileName = path[7];
 
     let disposition = "attachment";
     // 检查 fileName 是否存在
