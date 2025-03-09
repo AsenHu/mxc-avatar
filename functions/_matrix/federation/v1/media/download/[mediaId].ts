@@ -1,6 +1,6 @@
 import { generateFromString } from 'lib/gen_avatar'
 
-const onRequestGet = async (context: { request: Request }) => {
+async function onRequestGet(context: { request: Request }) {
     // 获取 mediaId
     const url = new URL(context.request.url);
     const mediaId = url.pathname.split('/').pop();
@@ -27,7 +27,7 @@ const onRequestGet = async (context: { request: Request }) => {
     );
 }
 
-const onRequestOptions = async () => {
+async function onRequestOptions() {
     return new Response(null, {
         status: 204,
         headers: {

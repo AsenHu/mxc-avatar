@@ -1,6 +1,9 @@
-export async function onRequestGet(context: { request: Request }) {
-    const hostname = new URL(context.request.url).hostname;
-    return new Response(`{"m.server": "${hostname}"}`, {
+async function onRequestGet(context: { request: Request }) {
+    const url = new URL(context.request.url);
+    const hostname = url.hostname;
+    const port = url.port;
+
+    return new Response(`{"m.server": "${hostname}:${port}"}`, {
         status: 200,
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -9,7 +12,7 @@ export async function onRequestGet(context: { request: Request }) {
     });
 }
 
-export async function onRequestOptions() {
+async function onRequestOptions() {
     return new Response(null, {
         status: 204,
         headers: {
@@ -19,3 +22,5 @@ export async function onRequestOptions() {
         }
     });
 }
+
+export { onRequestGet, onRequestOptions }
