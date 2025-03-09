@@ -7,10 +7,10 @@ async function onRequestGet(context: { request: Request }) {
     const mediaId = path[6];
     const fileName = path[7];
 
-    let disposition = "attachment";
+    let disposition = "inline";
     // 检查 fileName 是否存在
     if (fileName) {
-        disposition = `attachment; filename="${fileName}"`;
+        disposition = `inline; filename="${fileName}"`;
     }
 
     // 生成头像
