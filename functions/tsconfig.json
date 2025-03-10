@@ -2,6 +2,8 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "esnext",
+        "moduleResolution": "Bundler",
+        "strict": true,
         "lib": [
             "esnext"
         ],
@@ -13,7 +15,6 @@
             "lib/*": [
                 "lib/*"
             ]
-        },
-        "moduleResolution": "node"
+        }
     }
 }

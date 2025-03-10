@@ -1,5 +1,3 @@
-import {optimize} from 'svgo';
-
 interface AvatarData {
     path: string[],
     bg: string,
@@ -35,15 +33,7 @@ export async function generateFromString(id: string): Promise<string> {
         invEl,
     }
 
-    // 压缩 SVG
-
-    const svg = optimize(generateSVG(data)).data;
-
-    
-
-
-
-    return svg;
+    return generateSVG(data)
 }
 
 function byteToRgb(bytes: Uint8Array): string {
